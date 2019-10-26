@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(version: 2019_01_26_114039) do
     t.decimal "dosage"
     t.integer "route"
     t.text "necessity"
-    t.integer "order_frequencies_id"
+    t.integer "order_frequency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_frequencies_id"], name: "index_medication_orders_on_order_frequencies_id"
+    t.index ["order_frequency_id"], name: "index_medication_orders_on_order_frequency_id"
   end
 
   create_table "observations", force: :cascade do |t|
