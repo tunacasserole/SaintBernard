@@ -15,7 +15,7 @@
       <% @patients.each do |p| %>
         <tr>
           <td>
-            <%= link_to "#{p.first_name} #{p.middle_name} #{p.last_name}", transfers_path(p) %>
+            <%= link_to "#{p.first_name} #{p.middle_name} #{p.last_name}", transfer_path(p) %>
           </td>
 
           <td><%= p.admission.moment %></td>
