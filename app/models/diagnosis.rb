@@ -8,9 +8,9 @@ class Diagnosis < ApplicationRecord
   has_many :admissions, through: :admission_diagnoses
 
   scope :chronic, -> { where(coding_system: 'CHRONIC') }
+  scope :not_chronic, -> { where(coding_system: nil) }
 
-  def described_code
-    "(#{code}) #{description}"
+  def display_name
+    "#{description} (#{code})"
   end
-
 end
