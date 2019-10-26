@@ -1,0 +1,2 @@
+class OrderFrequency < ApplicationRecord
+end
