@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  mr: MyString
+  dob: 2018-06-07 06:21
+  gender_id: 1
+  admission_id: 88
