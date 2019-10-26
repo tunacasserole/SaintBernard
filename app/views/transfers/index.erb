@@ -1,0 +1,26 @@
+<div class="title row"><h2>Emergency Transfer Patients</h2></div>
+
+<br />
+
+<div class="content row">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Admission</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @patients.each do |p| %>
+        <tr>
+          <td>
+            <%= link_to "#{p.first_name} #{p.middle_name} #{p.last_name}", transfers_path(p) %>
+          </td>
+
+          <td><%= p.admission.moment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

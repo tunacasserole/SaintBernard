@@ -1,0 +1,76 @@
+<div class="content row">
+  <%= link_to 'Back', transfers_path %>
+</div>
+
+<div class="content row">
+  <table class="table table-bordered">
+      <tr class="summary-header"><td colspan="4"><h3>Emergency Transfer Summary (Form 34L-D)</h3></td></tr>
+
+      <tr><td colspan="4"><b>Transferring Facility</b></td></tr>
+      <tr>
+        <td colspan="1">Name<br />
+          <span style="color: #0000ff"><%= @facility.name %> </span><br /><br /><br />
+        </td>
+        <td colspan="3">&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><b>Patient Information</b></td>
+      </tr>
+
+      <tr>
+        <td>First Name<br />
+          <span style="color: #0000ff"><%= @patient.first_name %></span>
+        </td>
+
+        <td>Middle Name<br /><br />
+          <span style="color: #0000ff"><%= @patient.middle_name %></span>
+        </td>
+
+        <td>Last Name<br />
+          <span style="color: #0000ff"><%= @patient.last_name %></span>
+        </td>
+
+        <td>Medical Record (MR)<br />
+          <span style="color: #0000ff"><%= @patient.mr %></span>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><br /><b>Summary</b>
+          <br />
+          This <span style="color: #0000ff"><%= @patient.age %></span>
+          years old <span style="color: #0000ff"><%= @patient.gender %></span>
+          was admitted to <span style="color: #0000ff"><%= @facility.name %></span> emergency facility
+          on <span style="color: #0000ff"><%= @patient.admission.moment.to_formatted_s(:long).chop.chop.chop.chop.chop %></span>
+          at <span style="color: #0000ff"><%= @patient.admission.moment.strftime('%H:%M') %></span>
+          due to <span style="color: #0000ff"><%= @patient.admission.diagnoses.map(&:display_name).to_sentence %></span>.
+
+          The observed symptoms on admission were
+          <span style="color: #0000ff"><%= @patient.admission.symptoms.map(&:description).to_sentence %></span>.
+
+          <span style="color: #0000ff"><%= @patient.admission.observations.map(&:description).to_sentence %></span>.
+          <br /><br />
+          Upon asking about known allergies, the patient disclosed
+          <span style="color: #0000ff"><%= @patient.allergies.map(&:description).to_sentence %></span>.
+
+          Upon asking about chronic conditions, the patient disclosed
+          <span style="color: #0000ff"><%= @patient.diagnoses.chronic.map(&:display_name).to_sentence %></span>.
+
+          The patient was administered with
+          <span style="color: #0000ff"><%= @patient.medication_orders.map(&:display_name).to_sentence %></span>.
+
+          <br /><br />
+          The staff performed
+          <span style="color: #0000ff"><%= @patient.diagnostic_procedures.map(&:display_name).to_sentence %></span>.
+
+          revealing
+          <span style="color: #0000ff"><%= @patient.diagnoses.not_chronic.map(&:display_name).to_sentence %></span>.
+
+          Our team proceeded to
+          <span style="color: #0000ff"><%= @patient.treatments.first.description %> to <%= @patient.treatments.first.necessity %></span>.
+          </span>
+        </td>
+      </tr>
+  </table>
+</div>
